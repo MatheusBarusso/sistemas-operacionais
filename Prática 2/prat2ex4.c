@@ -3,7 +3,7 @@
 #include <pthread.h>
 #include <limits.h>
 
-#define N 1000
+#define N 16
 long long int A[N];
 long long int E;
 
@@ -18,7 +18,7 @@ long long int calc(long long int a, long long int b) {
 
 void *MDC(void* arg) {
     int j = (int)(long)arg;
-    if (j > E){
+    if (A[j] > E){
         long long int result = calc(E, A[j]);
         printf("%lld \n", result);
     }
@@ -27,7 +27,7 @@ void *MDC(void* arg) {
 
 int main() {
     int rc;
-    pthread_t  threads[N];
+    pthread_t threads[N];
 
     scanf("%lld", &E);
 
